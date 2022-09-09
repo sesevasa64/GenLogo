@@ -1,0 +1,41 @@
+.poll-element-container {
+  width: 1041px;
+  height: 349px;
+  display: flex;
+  position: relative;
+  align-items: flex-start;
+  flex-direction: column;
+}
+.poll-element-container1 {
+  flex: 0 0 auto;
+  width: 211px;
+  height: 118px;
+  display: flex;
+  align-items: flex-start;
+  border-color: rgba(12, 66, 55, 0);
+  border-width: 1px;
+}
+.poll-element-image {
+  width: 100px;
+  object-fit: fill;
+}
+.poll-element-radiobutton {
+  align-self: center;
+  margin-left: var(--dl-space-space-twounits);
+  border-color: #386259;
+  border-width: 1px;
+  border-radius: var(--dl-radius-radius-radius4);
+}
+@media(max-width: 479px) {
+  .poll-element-container {
+    width: auto;
+    height: auto;
+  }
+  .poll-element-container1 {
+    width: 228px;
+  }
+  .poll-element-image {
+    width: 50%;
+    height: 116px;
+  }
+}
