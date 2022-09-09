@@ -178,7 +178,7 @@
                     </h1>
                     <span class="home-text13">
                 Мы собрали более 1000 надписей и рисунков от жителей и гостей
-                города чтобы искусственный интеллект составил своё уникальное
+                Санкт-Петербурга, чтобы искусственный интеллект составил своё уникальное
                 представление о нашем городе.
               </span>
                 </div>
@@ -203,6 +203,7 @@
                         <label class="home-image03">
                             <input type="radio" name="option1" value="1" checked>
                         <img
+                                id="img1"
                                 alt="image"
                                 src="static/styles/public/playground_assets/logo_5.jpg"
                                 loading="eager"
@@ -214,6 +215,7 @@
                         <label class="home-image04">
                             <input type="radio" name="option1" value="2">
                         <img
+                                id="img2"
                                 alt="image"
                                 src="static/styles/public/playground_assets/logo_1.jpg"
                                 loading="eager"
@@ -225,6 +227,7 @@
                         <label class="home-image05">
                             <input type="radio" name="option1" value="3">
                         <img
+                                id="img3"
                                 alt="image"
                                 src="static/styles/public/playground_assets/logo_2.jpg"
                                 loading="eager"
@@ -471,10 +474,11 @@
         success:function()
         {
           $("input[type='radio'][name='option1']:not(:checked)").each(function (index) {
-              console.log( $( this ) );
-              $( this ).parent().style.display = "none";
+              console.log( $( this ).parent() );
+              $( this ).parent()[0].style.display = "none";
           });
           document.getElementById("vote-button").style.display = "none";
+          document.getElementById("img" + selectedValue).style.boxShadow = "black 1px 1px";
         }
       })
     });
