@@ -197,41 +197,53 @@
                 выбор за тобой!
               </span>
                 </div>
+                <form class="vote-form" id="voting_form">
                 <div class="home-container1">
                     <div class="home-container2">
+                        <label class="home-image03">
+                            <input type="radio" name="option1" value="1" checked>
                         <img
                                 alt="image"
                                 src="static/styles/public/playground_assets/logo_5.jpg"
                                 loading="eager"
                                 class="home-image03"
                         />
+                            </label>
                     </div>
                     <div class="home-container3">
+                        <label class="home-image04">
+                            <input type="radio" name="option1" value="2">
                         <img
                                 alt="image"
                                 src="static/styles/public/playground_assets/logo_1.jpg"
                                 loading="eager"
                                 class="home-image04"
                         />
+                        </label>
                     </div>
                     <div class="home-container4">
+                        <label class="home-image05">
+                            <input type="radio" name="option1" value="3">
                         <img
                                 alt="image"
                                 src="static/styles/public/playground_assets/logo_2.jpg"
                                 loading="eager"
                                 class="home-image05"
                         />
+                            </label>
                     </div>
                 </div>
                 <div class="home-container9">
-                    <button class="home-button button">
+                    <button class="home-button button" id="vote-button">
                         <span class="home-text19">
                             <span>Голосовать</span>
                             <br/>
                         </span>
                     </button>
                 </div>
+                </form>
             </div>
+
                 <img
                         alt="image"
                         src="static/styles/public/playground_assets/black-and-white-night-photography-city-canal-cityscape-842983-pxhere.com-1100h.jpg"
@@ -438,9 +450,34 @@
                 })
             })
         }
+
         listenForUrlChanges()
         runAllScripts()
     }
 </script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script type="text/javascript">
+    $(document).on('submit','#voting_form',function(e)
+                   {
+       let selected = $("input[type='radio'][name='option1']:checked");
+       let selectedValue = selected.attr("value");
+      e.preventDefault();
+      $.ajax({
+        type:'POST',
+        url:'/',
+        data:{
+          logo_number:selectedValue
+        },
+        success:function()
+        {
+          $("input[type='radio'][name='option1']:not(:checked)").each(function (index) {
+              console.log( $( this ) );
+              $( this ).parent().style.display = "none";
+          });
+          document.getElementById("vote-button").style.display = "none";
+        }
+      })
+    });
+  </script>
 </body>
 </html>
